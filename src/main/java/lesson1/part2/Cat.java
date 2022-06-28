@@ -1,12 +1,51 @@
 package lesson1.part2;
 
+import java.io.Serializable;
+
 public class Cat {
     private Color color;
+    private CatAttribute catAttribute;
 
-    static class A {}
+    public static class StaticTestClassCat {}
     class B{}
 
+    private class CatAttribute implements Serializable { //внутренний класс работает с экземплярами, класс статический работает с самим классом
+        private String name;
+        private int age;
+
+        public CatAttribute(String name, int age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public int getAge() {
+            return age;
+        }
+
+        public void setAge(int age) {
+            this.age = age;
+        }
+
+        @Override
+        public String toString() {
+            return  "name='" + name + '\'' +
+                    ", age=" + age;
+        }
+    }
+
     public Cat(Color color) {
+        this(color, "", 0);
+    }
+    public Cat(Color color, String name, int age) {
+        catAttribute = new CatAttribute(name, age);
         this.color = color;
     }
 
@@ -26,6 +65,6 @@ public class Cat {
 
     @Override
     public String toString() {
-        return String.format("У кота цвет %s(%s)", color.getRussianColor(), color.getEnglishColor());
+        return String.format("У кота %s цвет %s(%s) и ему(ей) %s лет", catAttribute.getName(), color.getRussianColor(), color.getEnglishColor(), catAttribute.getAge());
     }
 }
