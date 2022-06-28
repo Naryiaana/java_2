@@ -2,9 +2,9 @@ package lesson1.part2;
 
 public class Main {
     public static void main(String[] args) {
-       testEnum();
-       testAnonClasses();
-      // testInnerClasses();
+     /*  testEnum();
+       testAnonClasses();*/
+      testInnerClasses();
     }
 
     private static void testEnum() {
@@ -40,6 +40,7 @@ public class Main {
     }
 
     //приняли функциональность
+
     private static void test(SomeOneFileToImplement o) {
         System.out.println("Действие");
         System.out.println("Действие");
@@ -52,5 +53,12 @@ public class Main {
         System.out.println("Действие");
         System.out.println("Действие");
         System.out.println("=========");
+    }
+    private static void testInnerClasses() {
+        Cat cat = new Cat(Color.RED, "Ричард", 8);
+        //Cat.CatAttribute catAttribute = cat.new CatAttribute("Ричард", 8);
+        System.out.println(cat);
+
+        Cat.StaticTestClassCat classCat = new Cat.StaticTestClassCat();
     }
 }
